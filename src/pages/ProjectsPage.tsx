@@ -26,7 +26,7 @@ const ProjectsPage = () => {
       description:
         "Complete redesign and development of a multi-vendor e-commerce platform with advanced analytics and inventory management.",
       image:
-        "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=600&q=80",
+        "https://www.bigscal.com/wp-content/uploads/2023/04/Features-that-your-eCommerce-website-must-have-in-2023.png1_.webp",
       technologies: ["React", "Node.js", "MongoDB", "AWS"],
       duration: "6 months",
       teamSize: "8 developers",
@@ -54,7 +54,7 @@ const ProjectsPage = () => {
       description:
         "Comprehensive healthcare management system with patient records, appointment scheduling, and telemedicine capabilities.",
       image:
-        "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
+        "https://api.next.otakoyi.software/uploads/1hospital_management_system_316x_fad683347b.png",
       technologies: ["Vue.js", "Python", "PostgreSQL", "Docker"],
       duration: "8 months",
       teamSize: "12 developers",
@@ -81,7 +81,7 @@ const ProjectsPage = () => {
       description:
         "Real-time trading application with advanced charting, portfolio management, and secure authentication.",
       image:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+        "https://i0.wp.com/www.quytech.com/blog/wp-content/uploads/2024/01/stock-trading-app-development.png?fit=1437%2C871&ssl=1",
       technologies: ["React Native", "Node.js", "Redis", "WebSocket"],
       duration: "4 months",
       teamSize: "6 developers",
@@ -109,7 +109,7 @@ const ProjectsPage = () => {
       description:
         "Complete migration from on-premises infrastructure to AWS cloud with microservices architecture.",
       image:
-        "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80",
+        "https://www.akamai.com/site/en/images/blog/2024/cloud-migration-strategy-one.png",
       technologies: ["AWS", "Docker", "Kubernetes", "Terraform"],
       duration: "5 months",
       teamSize: "10 engineers",
@@ -136,7 +136,7 @@ const ProjectsPage = () => {
       description:
         "Machine learning powered analytics platform with predictive modeling and real-time data visualization.",
       image:
-        "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+        "https://www.42signals.com/wp-content/uploads/2025/01/42S-Website-Banner-AI.png",
       technologies: ["Python", "TensorFlow", "React", "D3.js"],
       duration: "7 months",
       teamSize: "9 developers",
@@ -164,7 +164,7 @@ const ProjectsPage = () => {
       description:
         "Advanced threat detection and monitoring system with real-time alerts and automated response capabilities.",
       image:
-        "https://images.unsplash.com/photo-1510511459019-5dda7724fd87?auto=format&fit=crop&w=600&q=80",
+        "https://www.aztechit.co.uk/hs-fs/hubfs/cybersecurity%20monitoring%20process.webp?width=1366&height=768&name=cybersecurity%20monitoring%20process.webp",
       technologies: ["Python", "Elasticsearch", "Kibana", "Docker"],
       duration: "6 months",
       teamSize: "7 security engineers",
