@@ -26,18 +26,7 @@ const ContactPage = () => {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [emailVerified, setEmailVerified] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
-  const [sentVerificationCode, setSentVerificationCode] = useState("");
-  const [isVerifying, setIsVerifying] = useState(false);
-  const [showVerification, setShowVerification] = useState(false);
 
-  // Generate random 6-digit verification code
-  const generateVerificationCode = () => {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  };
-
-  // Send verification email
   const sendVerificationEmail = async () => {
     if (!formData.email) {
       alert("Please enter your email address first");
@@ -50,60 +39,44 @@ const ContactPage = () => {
       return;
     }
 
-    setIsVerifying(true);
-    const code = generateVerificationCode();
-    setSentVerificationCode(code);
-
     try {
-      // Send verification code via EmailJS using the same template
       await emailjs.send(
         "service_bmbpg3d",
         "template_hdrzjio",
         {
           from_name: formData.name || "User",
-          from_email: formData.email,
-          company: "Email Verification",
-          phone: "Verification Required",
-          service: "Email Verification",
-          budget: "N/A",
-          message: `Your verification code is: ${code}\n\nPlease enter this 6-digit code to verify your email address.\n\nThis is an automated verification email. If you didn't request this, please ignore this email.`,
-          to_name: "Website Admin",
-          to_email: "info@workitsolutions.com", // Your email address
+          from_email: "info@workitsolutions.com", // your verified sender
+          to_name: formData.name || "User",
+          to_email: formData.email, // Send to the user's own email
+          message: `Hello ${formData.name},
+
+Thank you for reaching out. Here's a copy of your project details:
+
+📧 Email: ${formData.email}
+🏢 Company: ${formData.company || "Not Provided"}
+📱 Phone: ${formData.phone || "Not Provided"}
+🛠️ Service Needed: ${formData.service}
+💰 Budget: ${formData.budget || "Not Provided"}
+
+📝 Project Description:
+${formData.message}
+
+We'll be in touch soon!
+
+— WorkIT Solutions Team`,
         },
         "aKwTwsM2jmkeSX-oj"
       );
 
-      setShowVerification(true);
-      alert(
-        `Verification code sent to ${formData.email}. Please check your email and also check your spam folder.`
-      );
+      alert(`Your message has been sent to ${formData.email}`);
     } catch (error) {
-      alert("Failed to send verification email. Please try again.");
-      console.error("Verification Email Error:", error);
-    } finally {
-      setIsVerifying(false);
-    }
-  };
-
-  // Verify the code entered by user
-  const verifyCode = () => {
-    if (verificationCode === sentVerificationCode) {
-      setEmailVerified(true);
-      setShowVerification(false);
-      alert("Email verified successfully! You can now send your message.");
-    } else {
-      alert("Invalid verification code. Please try again.");
+      console.error("Email Send Error:", error);
+      alert("Failed to send the email. Please try again.");
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Check if email is verified
-    if (!emailVerified) {
-      alert("Please verify your email address before sending the message.");
-      return;
-    }
 
     setIsSubmitting(true);
 
@@ -133,6 +106,10 @@ const ContactPage = () => {
         FormRef.current!,
         "aKwTwsM2jmkeSX-oj"
       );
+
+      // Send confirmation email to user
+      await sendVerificationEmail();
+
       setSubmitted(true);
       setFormData({
         name: "",
@@ -143,11 +120,6 @@ const ContactPage = () => {
         budget: "",
         message: "",
       });
-      // Reset verification status
-      setEmailVerified(false);
-      setShowVerification(false);
-      setVerificationCode("");
-      setSentVerificationCode("");
       setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
       alert("Failed to send message. Please try again.");
@@ -342,81 +314,20 @@ const ContactPage = () => {
                     >
                       Email Address *
                     </label>
-                    <div className="flex gap-2">
-                      <input
-                        type="email"
-                        id="from_email"
-                        name="from_email"
-                        required
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        placeholder="your@email.com"
-                        disabled={emailVerified}
-                      />
-                      <button
-                        type="button"
-                        onClick={sendVerificationEmail}
-                        disabled={
-                          isVerifying || emailVerified || !formData.email
-                        }
-                        className={`px-4 py-3 rounded-lg font-medium transition-colors duration-200 ${
-                          emailVerified
-                            ? "bg-green-500 text-white cursor-default"
-                            : "bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white"
-                        }`}
-                      >
-                        {emailVerified
-                          ? "✓ Verified"
-                          : isVerifying
-                          ? "Sending..."
-                          : "Verify"}
-                      </button>
-                    </div>
+                    <input
+                      type="email"
+                      id="from_email"
+                      name="from_email"
+                      required
+                      value={formData.email}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      placeholder="your@email.com"
+                    />
                   </div>
                 </div>
-
-                {showVerification && !emailVerified && (
-                  <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                    <h4 className="text-sm font-medium text-blue-800 mb-2">
-                      Email Verification Required
-                    </h4>
-                    <p className="text-sm text-blue-600 mb-3">
-                      We've sent a 6-digit verification code to {formData.email}
-                      . Please check your email and spam folder:
-                    </p>
-                    <div className="flex gap-2 mb-3">
-                      <input
-                        type="text"
-                        placeholder="Enter 6-digit code"
-                        value={verificationCode}
-                        onChange={(e) => setVerificationCode(e.target.value)}
-                        maxLength={6}
-                        className="flex-1 px-3 py-2 border border-blue-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      />
-                      <button
-                        type="button"
-                        onClick={verifyCode}
-                        disabled={verificationCode.length !== 6}
-                        className="px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white rounded-lg font-medium transition-colors duration-200"
-                      >
-                        Verify
-                      </button>
-                    </div>
-                    <button
-                      type="button"
-                      onClick={sendVerificationEmail}
-                      disabled={isVerifying}
-                      className="text-sm text-blue-600 hover:text-blue-800 underline disabled:text-gray-400"
-                    >
-                      {isVerifying
-                        ? "Sending..."
-                        : "Didn't receive the code? Resend"}
-                    </button>
-                  </div>
-                )}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -534,27 +445,12 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  disabled={isSubmitting || !emailVerified}
-                  className={`w-full px-8 py-4 rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center ${
-                    emailVerified
-                      ? "bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white"
-                      : "bg-gray-400 cursor-not-allowed text-white"
-                  }`}
+                  disabled={isSubmitting}
+                  className="w-full px-8 py-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed text-white rounded-lg font-semibold transition-colors duration-200 flex items-center justify-center"
                 >
-                  {isSubmitting
-                    ? "Sending..."
-                    : emailVerified
-                    ? "Send Message"
-                    : "Verify Email First"}
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <Send className="ml-2 h-5 w-5" />
                 </button>
-
-                {!emailVerified && (
-                  <p className="text-sm text-gray-600 text-center">
-                    Please verify your email address before sending your
-                    message.
-                  </p>
-                )}
               </form>
             )}
           </motion.div>
