@@ -1,10 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import {
-  Linkedin,
-  Twitter,
-  Github,
-  Mail,
   Award,
   Code,
   Users,
@@ -12,84 +8,50 @@ import {
 } from "lucide-react";
 
 const TeamPage = () => {
+  const getInitials = (name: string): string => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase();
+  };
+
   const teamMembers = [
     {
-      name: "Sarah Johnson",
+      name: "Sunny Singh",
       position: "CEO & Founder",
-      bio: "Former Microsoft executive with 15+ years in enterprise technology. Led digital transformation initiatives for Fortune 500 companies.",
-      image:
-        "https://images.pexels.com/photos/3778966/pexels-photo-3778966.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
+      bio: "Visionary leader with 5+ years in tech. passionate about innovation and team empowerment.",
       skills: ["Strategic Planning", "Digital Transformation", "Leadership"],
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        email: "sarah@workitsolutions.com",
-      },
     },
     {
-      name: "Michael Chen",
+      name: "Lokesh Kumawat",
       position: "CTO & Co-Founder",
       bio: "Full-stack architect with expertise in cloud computing and AI. Previously lead engineer at Google and AWS.",
-      image:
-        "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
       skills: ["Cloud Architecture", "AI/ML", "System Design"],
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#",
-        email: "michael@workitsolutions.com",
-      },
     },
     {
-      name: "Emily Rodriguez",
-      position: "Head of Design",
-      bio: "Award-winning UX designer with a passion for creating intuitive user experiences. Former design lead at Apple.",
-      image:
-        "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      skills: ["UI/UX Design", "Design Systems", "User Research"],
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        email: "emily@workitsolutions.com",
-      },
+      name: "Harfool Gurjar",
+      position: "MERN Stack Developer",
+      bio: "Passionate MERN stack developer with a knack for building dynamic web applications. Former intern at TechSolutions.",
+      skills: ["MongoDB", "Express.js", "React", "Node.js"],
     },
     {
-      name: "David Thompson",
-      position: "Lead Developer",
-      bio: "Senior full-stack developer specializing in React, Node.js, and cloud technologies. Open source contributor.",
-      image:
-        "https://images.pexels.com/photos/3785077/pexels-photo-3785077.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      skills: ["React", "Node.js", "DevOps"],
-      social: {
-        linkedin: "#",
-        github: "#",
-        email: "david@workitsolutions.com",
-      },
+      name: "Mannu kumawat",
+      position: "UI/UX Designer",
+      bio: "Creative UI/UX designer with a passion for crafting user-friendly interfaces. Former design intern at InnovateX.",
+      skills: ["Figma", "Adobe XD", "User Research"],
     },
     {
-      name: "Jessica Kim",
-      position: "Data Scientist",
-      bio: "PhD in Machine Learning with expertise in predictive analytics and business intelligence. Former researcher at Stanford.",
-      image:
-        "https://images.pexels.com/photos/3760263/pexels-photo-3760263.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      skills: ["Machine Learning", "Data Analytics", "Python"],
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        email: "jessica@workitsolutions.com",
-      },
+      name: "Vinod kumawat",
+      position: "SEO Specialist & Content Strategist",
+      bio: "SEO expert with 2+ years in digital marketing. Proven track record in driving organic traffic and content strategy.",
+      skills: ["SEO", "Content Marketing", "Analytics"],
     },
     {
-      name: "Robert Wilson",
-      position: "Security Engineer",
-      bio: "Cybersecurity expert with 12+ years in enterprise security. Certified ethical hacker and security consultant.",
-      image:
-        "https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&dpr=2",
-      skills: ["Cybersecurity", "Penetration Testing", "Compliance"],
-      social: {
-        linkedin: "#",
-        email: "robert@workitsolutions.com",
-      },
+      name: "Rohit kumawat",
+      position: "DevOps Engineer",
+      bio: "DevOps engineer with expertise in CI/CD pipelines and cloud infrastructure. Formerly at CloudTech.",
+      skills: ["Docker", "Kubernetes", "AWS", "CI/CD"],
     },
   ];
 
@@ -172,11 +134,9 @@ const TeamPage = () => {
                 className="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="relative mb-6">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover"
-                  />
+                  <div className="w-32 h-32 rounded-full mx-auto bg-gray-700 flex items-center justify-center text-white text-3xl font-bold">
+                    {getInitials(member.name)}
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-2">
                   {member.name}
@@ -195,41 +155,6 @@ const TeamPage = () => {
                       {skill}
                     </span>
                   ))}
-                </div>
-
-                <div className="flex justify-center space-x-4">
-                  {member.social.linkedin && (
-                    <a
-                      href={member.social.linkedin}
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
-                    >
-                      <Linkedin className="h-5 w-5" />
-                    </a>
-                  )}
-                  {member.social.twitter && (
-                    <a
-                      href={member.social.twitter}
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
-                    >
-                      <Twitter className="h-5 w-5" />
-                    </a>
-                  )}
-                  {member.social.github && (
-                    <a
-                      href={member.social.github}
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
-                    >
-                      <Github className="h-5 w-5" />
-                    </a>
-                  )}
-                  {member.social.email && (
-                    <a
-                      href={`mailto:${member.social.email}`}
-                      className="text-gray-400 hover:text-blue-600 transition-colors"
-                    >
-                      <Mail className="h-5 w-5" />
-                    </a>
-                  )}
                 </div>
               </motion.div>
             ))}

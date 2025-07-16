@@ -41,11 +41,11 @@ const ContactPage = () => {
 
     try {
       await emailjs.send(
-        "service_bmbpg3d",
-        "template_hdrzjio",
+        "service_xix95lw",
+        "template_lcw98w6",
         {
           from_name: formData.name || "User",
-          from_email: "info@workitsolutions.com", // your verified sender
+          from_email: formData.email, // use the user's email
           to_name: formData.name || "User",
           to_email: formData.email, // Send to the user's own email
           message: `Hello ${formData.name},
@@ -65,7 +65,7 @@ We'll be in touch soon!
 
 — WorkIT Solutions Team`,
         },
-        "aKwTwsM2jmkeSX-oj"
+        "KeAuf05Iqv36Mh_xs"
       );
 
       alert(`Your message has been sent to ${formData.email}`);
@@ -101,10 +101,10 @@ We'll be in touch soon!
 
     try {
       await emailjs.sendForm(
-        "service_bmbpg3d",
-        "template_hdrzjio",
+        "service_xix95lw",
+        "template_lcw98w6",
         FormRef.current!,
-        "aKwTwsM2jmkeSX-oj"
+        "KeAuf05Iqv36Mh_xs"
       );
 
       // Send confirmation email to user
