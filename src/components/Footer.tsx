@@ -83,7 +83,7 @@ const Footer = () => {
                   className="text-gray-600 hover:text-gray-900 transition-colors font-light"
                 >
                   Contact
-                </Link>
+                </Link>     
               </li>
             </ul>
           </div>
@@ -107,37 +107,7 @@ const Footer = () => {
                 IT Consulting & Support
               </li>
             </ul>
-            <form className="flex items-center bg-gray-100 rounded-full px-4 py-2 shadow-inner">
-              <input
-                type="email"
-                placeholder="Your Email"
-                className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400 text-base font-light"
-              />
-              <button
-                type="submit"
-                className="ml-2 text-gray-500 hover:text-gray-900 transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M22 2L11 13"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M22 2L15 22L11 13L2 9L22 2Z"
-                  />
-                </svg>
-              </button>
-            </form>
+              
           </div>
         </div>
 

@@ -9,7 +9,7 @@ import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import TeamPage from './pages/TeamPage';
 import TestimonialsPage from './pages/TestimonialsPage';
-import ProjectsPage from './pages/ProjectsPage';
+// import ProjectsPage from './pages/ProjectsPage';
 import ContactPage from './pages/ContactPage';
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/testimonials" element={<TestimonialsPage />} />
-            <Route path="/projects" element={<ProjectsPage />} />
+            {/* <Route path="/projects" element={<ProjectsPage />} /> */}
             <Route path="/contact" element={<ContactPage />} />
           </Routes>
         </main>

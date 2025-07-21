@@ -14,7 +14,7 @@ const Navbar = () => {
     { name: "Services", path: "/services" },
     { name: "Team", path: "/team" },
     { name: "Testimonials", path: "/testimonials" },
-    { name: "Projects", path: "/projects" },
+    // { name: "Projects", path: "/projects" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -24,7 +24,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100/50"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto  sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link to="/" className="flex items-center space-x-2">
             <img src={workitLogo} alt="WorkIT Logo" className="h-10 w-auto" />

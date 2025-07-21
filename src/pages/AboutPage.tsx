@@ -80,11 +80,11 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 ">
       {/* Hero Section */}
       <section className="relative min-h-[35vh] flex items-center justify-center bg-gradient-to-br from-gray-50 to-white">
         <div className="absolute inset-0 opacity-20 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-white via-gray-100 to-transparent"></div>
-        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 text-center mt-[45px]">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,7 +106,7 @@ const AboutPage = () => {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-20 bg-white">
+      <section className="py-5 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <motion.div

@@ -252,18 +252,18 @@ const TeamPage = () => {
               </p>
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">Senior React Developer</span>
+                  <span className="text-gray-700">kotlin Developer</span>
                   <span className="text-blue-600 font-medium">Remote</span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">UX Designer</span>
                   <span className="text-blue-600 font-medium">
-                    San Francisco
+                    on site
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-700">DevOps Engineer</span>
-                  <span className="text-blue-600 font-medium">New York</span>
+                  <span className="text-gray-700">SEO Specialist</span>
+                  <span className="text-blue-600 font-medium">Remote</span>
                 </div>
               </div>
               <button className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors duration-200">
